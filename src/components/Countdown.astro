@@ -4,7 +4,7 @@
 
 <section class='bg-[#c1b6a4] py-10'>
   <div
-    class='mx-auto flex justify-center gap-10 text-3xl font-semibold tracking-wide text-white max-sm:gap-6 max-sm:text-2xl'
+    class='mx-auto flex justify-center gap-6 text-2xl font-semibold tracking-wide text-white'
     id='countdown'
   >
   </div>
@@ -38,11 +38,11 @@
       countdown.innerHTML = units
         .map(
           (unit, i) =>
-            `<div class='flex w-20 flex-col items-center gap-4 max-sm:w-12'>
-              <span class='text-5xl max-sm:text-4xl'>${String(unit.value).padStart(2, '0')}</span>
-              <span class='text-xs font-black max-sm:text-[10px]'>${unit.label}</span>
+            `<div class='flex w-12 flex-col items-center gap-4'>
+              <span class='text-4xl'>${String(unit.value).padStart(2, '0')}</span>
+              <span class='text-[10px] font-black'>${unit.label}</span>
             </div>${
-              i < units.length - 1 ? `<span class='text-3xl'>:</span>` : ''
+              i < units.length - 1 ? `<span class='text-2xl'>:</span>` : ''
             }`
         )
         .join('')

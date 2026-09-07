@@ -20,8 +20,7 @@ import Music from '../components/Music.astro'
     />
   </head>
   <body class='flex select-none items-center bg-[#FBFAF6]'>
-    <div id='parallax'></div>
-    <div class='relative min-h-screen max-w-[550px] bg-tertiary'>
+    <div class='relative min-h-screen max-w-[500px] bg-tertiary'>
       <div class='relative sticky top-0 z-10 h-0'>
         <div class='absolute right-4 top-4'>
           <Music src='/music/music.mp3' />
@@ -70,27 +69,4 @@ import Music from '../components/Music.astro'
     overflow-x: hidden;
   }
 
-  #parallax {
-    position: fixed;
-    top: -30vh;
-    left: 0;
-    width: 100%;
-    height: 160vh;
-
-    background-image: url('/background.jpeg');
-    background-size: cover;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-
-    z-index: -1;
-  }
 </style>
-
-<script type='js' is:inline>
-  const bg = document.getElementById('parallax')
-
-  window.addEventListener('scroll', () => {
-    bg.style.transform = `translate3d(0, -${window.scrollY * 0.1}px, 0)`
-  })
-</script>
