@@ -1,0 +1,57 @@
+---
+
+---
+
+<section class='bg-[#c1b6a4] py-10'>
+  <div
+    class='mx-auto flex justify-center gap-10 text-3xl font-semibold tracking-wide text-white max-sm:gap-6 max-sm:text-2xl'
+    id='countdown'
+  >
+  </div>
+</section>
+
+<script>
+  const countdown = document.getElementById('countdown') as HTMLDivElement
+  const goalDate = new Date('2026-09-26T21:30:00').getTime()
+
+  function updateCountdown() {
+    const actualDate = new Date().getTime()
+    const difference = goalDate - actualDate
+
+    const data = {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      ),
+      minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+      seconds: Math.floor((difference % (1000 * 60)) / 1000)
+    }
+
+    if (difference >= 0) {
+      const units = [
+        { value: data.days, label: 'D\u00cdAS' },
+        { value: data.hours, label: 'HORAS' },
+        { value: data.minutes, label: 'MINUTOS' },
+        { value: data.seconds, label: 'SEGUNDOS' }
+      ]
+
+      countdown.innerHTML = units
+        .map(
+          (unit, i) =>
+            `<div class='flex w-20 flex-col items-center gap-4 max-sm:w-12'>
+              <span class='text-5xl max-sm:text-4xl'>${String(unit.value).padStart(2, '0')}</span>
+              <span class='text-xs font-black max-sm:text-[10px]'>${unit.label}</span>
+            </div>${
+              i < units.length - 1 ? `<span class='text-3xl'>:</span>` : ''
+            }`
+        )
+        .join('')
+
+      requestAnimationFrame(updateCountdown)
+    } else {
+      countdown.innerHTML = '\u00a1Es el d\u00eda!'
+    }
+  }
+
+  updateCountdown()
+</script>
